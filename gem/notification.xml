@@ -1,0 +1,64 @@
+
+<newslist>
+	<news category="orientation">
+		<date>1</date>
+		<month>5</month>
+		<headline>Elective orientation details available</headline>
+	</news>
+	<news category="Registration_starts ">
+		<date>15</date>
+		<month>6</month>
+		<headline>Elective Registration starts today</headline>
+	</news>
+	<news category="Registration_ends_on ">
+		<date>16</date>
+		<month>6</month>
+		<headline>Elective Registration ends on 30th june</headline>
+	</news>
+	<news category=" Registration_ends_today">
+		<date>30</date>
+		<month>6</month>
+		<headline>Elective Registration ends today</headline>
+	</news>
+	<news category="Registration_closed ">
+		<date>1</date>
+		<month>7</month>
+		<headline>Elective Registration has been closed</headline>
+	</news>	
+	<news category="College_starts ">
+		<date>1</date>
+		<month>8</month>
+		<headline>College starts this month</headline>
+	</news>
+	
+	<news category="1stNSSR">
+		<date>1</date>
+		<month>9</month>
+		<headline>Check for N S S R List of 1st internal</headline>
+	</news>
+	<news category="1stmarks ">
+		<date>15</date>
+		<month>9</month>
+		<headline>Check for marks List of 1st internal</headline>
+	</news>
+	<news category="2ndNSSR ">
+		<date>1</date>
+		<month>10</month>
+		<headline>Check for N S S R List of 2nd internal</headline>
+	</news>
+	<news category="2ndmarks_and_submit_assignment_topics">
+		<date>15</date>
+		<month>10</month>
+		<headline>Check for marks List of 2nd internal  and submit assignment topics</headline>
+	</news>
+	<news category="3rdNSSR_and_submit_assignment_by ">
+		<date>1</date>
+		<month>11</month>
+		<headline>Check for N S S R List of 3rd internal and submit assignment by 15th November </headline>
+	</news>
+	<news category="3rdmarks_and_assignment_last_day">
+		<date>15</date>
+		<month>11</month>
+		<headline>Check for marks List of 3rd internal and today is last date for assignment submisson</headline>
+	</news>
+</newslist>

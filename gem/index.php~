@@ -1,0 +1,311 @@
+ <!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="http://localhost/gem/global/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://localhost/gem/global/css/animate.css"> 
+	<link href="overlay/css/overlay.css" type="text/css" rel="stylesheet"/>
+	<script src="http://localhost/gem/global/js/j.js"></script>
+	<script src="http://localhost/gem/js/mainpage.js"></script>
+	
+	<link href="http://localhost/gem/global/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="global/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="http://localhost/gem/css/smoothj.css" />
+	<script src="http://localhost/gem/js/smoothj.js"></script>
+	  <link rel="stylesheet" href="global/jquery-ui.css">
+  <script src="global/jquery-1.10.2.js"></script>
+  <script src="global/jquery-ui.js"></script>
+    <link rel="stylesheet" href="global/jquery-ui.css">
+  <script src="global/jquery-1.10.2.js"></script>
+  <script src="global/jquery-ui.js"></script>
+  <script src="global/jquery-1.10.2.js"></script>
+  <script src="global/jquery-ui.js"></script>
+
+	<link rel="stylesheet" href="http://localhost/gem/css/mainpage.css">
+	<script src="http://localhost/gem/js/mainpage.js"></script>
+	<script>
+	var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() 
+			{
+					if (xhttp.readyState == 4 && xhttp.status == 200) 
+					{
+						
+						myFunction(xhttp);
+					}
+			}
+			xhttp.open("GET", "http://localhost/gem/notification.xml", true);
+			xhttp.send();
+			function myFunction(xml) 
+			{
+								
+				var xmlDoc = xml.responseXML;
+				var d = new Date();
+				var month = d.getMonth()+1;
+				var day = d.getDate();
+				
+					var output = d.getFullYear() + '/' +
+					(month<10 ? '0' : '') + month + '/' +
+					(day<10 ? '0' : '') + day;
+					//alert(output);
+					var output1 =(day<10 ? '0' : '') + day+ '/'
+					+(month<10 ? '0' : '') + month + '/' +
+					+ d.getFullYear() ; 
+					//alert(output);
+				
+				var m=0;
+				var dy=0;
+				var idup=0;
+				var x = xmlDoc.getElementsByTagName("news");
+				
+				for (i = 0; i <x.length; i++)
+				{
+					dy=x[i].getElementsByTagName("date")[0].childNodes[0].nodeValue;
+					m=x[i].getElementsByTagName("month")[0].childNodes[0].nodeValue;
+						//alert(dy+' '+m);
+					if(m < month || (m == month && dy<=day) )
+					{	
+						idup=i;
+						//alert(idup);
+					}
+						
+				}
+					document.getElementById("dispn").innerHTML ="<B>"+ output1+"</B>:"+x[idup].getElementsByTagName("headline")[0].childNodes[0].nodeValue+"</b>";
+					document.getElementById("dispna").innerHTML ="<B>"+ output1+"</B>:"+x[idup].getElementsByTagName("headline")[0].childNodes[0].nodeValue+"</b>";
+			}
+	</script>
+</head>
+<body >
+
+ <?php require_once 'ajax/autocomplete.php'; ?>
+
+		<header>
+			
+			<div id="nav-container">
+				<nav >
+					<img class="scroll-top logo  animated bounceInLeft" height="70px" width="70px" src="http://localhost/gem/img/logo.png"></img>
+					<ul>
+						<li><a href="http://localhost/gem/index.php"><b>Home</b></a></li>
+						<li><a href="http://localhost/gem/index.php#elective"><b>Electives</b></a></li>
+						<li><a href="http://localhost/gem/index.php#tabs"><b>Event</b></a></li>
+						<li><a href="http://localhost/gem/index.php#tabs"><b>About Us</b></a></li>
+						<li><a href="http://localhost/gem/index.php#contactus"><b>Contact Us</b></a></li>
+						
+					</ul>
+					<div>
+						<img src="http://localhost/gem/img/guest.PNG" width="30px" height="30px">&nbsp; Hi, Guest</img>
+						<a href="#myOverlay1" data-overlay-trigger>Login</a>
+					</div>
+				</nav>
+			
+			</div>	
+		
+			<div id="slider-container1">
+				<div class="slider_caption1">
+                    <p>Elective</p>
+                    
+                </div>
+				<div class="slider_caption2">
+                    <p>Registration &amp; Management</p> 
+                </div>	
+		
+	
+				<a href="http://localhost/gem/studentregister.php"  id="button" class="btn btn-apply1" title="Register"  >REGISTER</a>				
+			</div>
+			
+		</header>
+			<marquee id="dispn" scrollamount="3" direction="right" style="background-color:#F5FFFA;height:10%;color:black;width:100%;font-size:20px;">Latest News:</marquee>
+		<br>
+		<br>
+		<section>
+				<div class="article1-container wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;">
+					
+					<div class="aboutus">
+						<h2 class="titile">About Us</h2>
+						<p>This was introduced for better registration and management of the academic details of the elective courses.
+						R.V. College of Engineering (RVCE) established in 1963 is one of the earliest self-financing engineering colleges
+						in the country. The institution is run by Rashtreeya Sikshana Samithi Trust (RSST) a not for profit trust. 
+						The trust runs over 25 institutions and RVCE is the flagship institute under the trust.
+						RVCE is today recognized as one of India’s leading technical institution.
+						</p>
+					</div >
+					<div id="tabs">
+						<ul>
+							<li><a href="#tabs-1">Notice</a></li>
+							<li><a href="#tabs-2">Events</a></li>
+							
+						</ul>
+						<div id="tabs-1">
+							<ul class="list-group">
+							  <li id="dispna" class="list-group-item list-group-item-success">Coming soon</li>
+							  <li class="list-group-item list-group-item-success">Coming soon</li>
+					    	  <li class="list-group-item list-group-item-success">Coming soon</li>
+					          <li class="list-group-item list-group-item-success">Coming soon</li>
+							</ul>
+						</div>
+						<div id="tabs-2">
+							<ul class="list-group">
+							  <li class="list-group-item list-group-item-success">....</li>
+							  <li class="list-group-item list-group-item-success">....</li>
+							  <li class="list-group-item list-group-item-success">....</li>
+							  <li class="list-group-item list-group-item-success">....</li>
+						  </ul>
+						</div>
+						
+					</div>
+					
+
+				</div>
+				<div class="article2-container ">
+					<div class="ele_head" id="elective">
+						<h1>ELECTIVES</h1>
+					</div>
+					<br>
+					
+					<p title="Filter elective list by "><i class="fa fa-search"></i>&nbsp;SEARCH BY:</p>
+					<div class="form-group" class="dp1">
+						<label for="sel1">Department:</label>
+						<select class="form-control" id="dept" onchange="SubmitForm();">
+							<option>ISE</option>
+							<option>CSE</option>
+							<option>ECE</option>
+							<option>EEE</option>
+						</select>
+					</div>
+					<div class="form-group" class="dp2" >
+						<label for="sel1">Semester:</label>
+						<select class="form-control"  id="sem" onchange="SubmitForm();">
+							<option>5</option>
+							<option>6</option>
+							<option>7</option>
+							
+						</select>
+					</div>
+					
+					<div class="form-group" class="dp3" >
+						<label for="sel1">Global or Local:</label>
+						<select class="form-control" id="gorl" onchange="SubmitForm();">
+							<option>Local</option>
+							<option>Global</option>
+							
+						</select>
+					</div>
+					<div id="nd">
+						<br><br><br><br><br>
+					</div>
+				</div>
+				
+				<div class="article3-container ">
+						<div class="row">
+							<h3 title="search by elective name">Elective Details</h3>
+							<br>
+							   <div id="custom-search-input">
+									<div class="input-group col-md-12">
+													<input  type="text" id="tags" class="search-query form-control" placeholder="Search" />
+													<span class="input-group-btn">
+														<button  onclick="display()" class="btn btn-danger" type="button">
+															<i class="fa fa-search"></i>
+														</button>
+													</span>
+									</div>
+								</div>
+						</div>
+						<div id="details">
+							<br><br>
+						</div>	
+				</div>
+				
+				<div class="article4-container " id="contactus">	   
+					<div class="row">
+						<div class="heading text-center"> 
+							<!-- Heading -->
+							<h2>Contact Us</h2>
+						</div>
+					</div>
+					<form action="contactus.php" method="post">
+					<div class="row mrgn30">
+							<div class="col-sm-12">
+								<div class="form-group">
+									<label for="name">Name</label>
+									<input type="text" class="form-control" name="name" id="name" placeholder="Enter name" title="Please enter your name (at least 2 characters)">
+								</div>
+								<div class="form-group">
+									<label for="email">Email</label>
+									<input type="email" class="form-control" name="email" id="email" placeholder="Enter email" title="Please enter a valid email address">
+								</div>
+								<div class="form-group">
+									<label for="comments">Comments</label>
+									<textarea name="comment" class="form-control" id="comments" cols="3" rows="5" placeholder="Enter your message…" title="Please enter your message (at least 10 characters)"></textarea>
+									<br>
+									<button name="submit" type="submit" class="btn btn-lg btn-primary" id="submit" ">Submit</button>
+								</div>
+							</div>
+							
+					</div>
+					</form>
+				</div>
+			
+			
+		</section>
+		<footer>
+			<div class="container">
+				<div class="col">
+                   <ul>
+						<li><B style="font-size:16px">Address</B></li>
+						<li>R.V. College of Engineering 			</li>
+						<li>R.V. Vidyaniketan post,Mysore Road  	</li>                        
+						<li>Bangalore-560059 						</li>
+                    </ul>
+                 </div>
+				 <div class="col2">
+                   <ul>
+						<li><B style="font-size:16px">Contact Us</B></li>
+						<li>Phone: +22 342 2345 345		</li>
+						<li>Email: info@example.com		</li>                        
+						<li>Skype: my-company			</li>
+                    </ul>
+                 </div>
+				 
+			</div>
+
+			<div class="col3">
+					Copyright 2015 | All Rights Reserved
+			</div>
+		</footer>
+		<div id="overlay" style="display:none;">
+			<!-- Each overlay needs an id. The aria-labelledby is not required but is best practice -->
+			<div style="" id="myOverlay1" aria-labelledby="myOverlay1Heading" data-overlay-container-class="slide-up" role="region">
+				<h2 id="myOverlay1Heading">LOGIN </h2>
+                <form role="form" method="post" action="logindb.php">
+					<div class="form-group" class="dp1">
+						
+						<select class="form-control" name="typ" onchange="SubmitForm();">
+						<?php
+							echo '<option >...</option>';
+							echo '<option >STAFF</option>';
+							echo '<option >STUDENT</option>';
+						?>
+						</select>
+					</div>
+					<div class="form-group" >
+						<label><i class='fa fa-search'><b>&nbsp;EMAIL-ID</b></i></label>
+						<input type="text"  name="User_name"   class="form-control" >
+					</div>
+					<div class="form-group">
+						<label><i class='fa fa-search'><b>&nbsp;password</b></i></label>
+						<input name="password" type="password" value="" class="form-control" >
+					</div>
+					<br><br><br><br>
+					<input style="margin:5% 10%" class="button-0" type="submit" value="SIGN IN"/>
+				</form>	
+			</div>
+			
+		</div>
+		
+		
+        
+                <!-- Include Overlay.js -->
+		<script type="text/javascript" src="overlay/js/Overlay.js"></script> 
+        
+</body>
+</html>

@@ -1,0 +1,136 @@
+
+
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "elect_auto";
+
+session_start();
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+$sname=array("");
+
+echo "hello";
+$c=0;
+$sql = "SELECT staff_name,staff_id FROM staff";
+$result = $conn->query($sql);
+if ($result->num_rows > 0)
+{
+    // output data of each row
+    while($row = $result->fetch_assoc()) 
+    {
+       $sname[$c]=$row["staff_name"]; 
+       $c=$c+1;
+       echo $sname;
+    }
+} 
+else {
+    echo "0 results";
+}
+
+$conn->close();
+?>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>CodePen - Random Login Form</title>
+  
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+
+    <style>
+
+body{
+	margin: 0;
+	padding: 0;
+	background: #fff;
+
+	color: #fff;
+	font-family: Arial;
+	font-size: 12px;
+}
+
+.body{
+	position: absolute;
+	top: -20px;
+	left: -20px;
+	right: -40px;
+	bottom: -40px;
+	width: auto;
+	height: 3000px;
+	background-color:red;
+	//background-image: url("b.jpg");
+	background-size: 100% 50%;
+	background-repeat:repeat;
+
+	-webkit-filter: blur(5px);
+	z-index: 0;
+}
+
+
+.login{
+	position: absolute;
+	top: 100px;
+	left: 300px;
+	height: 150px;
+	width: 350px;
+	padding: 10px;
+	z-index: 2;
+}
+
+ input[type=text]{
+	width: 200px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+	
+}
+
+
+
+
+ input[type=text]:focus{
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.9);
+	
+}
+
+</style>
+</head>
+
+<body>
+<form method="post" action="ancedb.php">
+  <div class="body"></div>
+		<div class="grad"></div>
+		<div class="login">
+		
+				<B style="font-size:20px;">Staff ID&nbsp;&nbsp;&nbsp;</B> 
+ <?php
+				    echo '<input type="text"  name="Name"  value="'.$name.'"  ';  ?>
+				<br><br>
+				
+				
+ <button style="background:#0F3D4C;color:white;border-radius:5px;position:relative;top:20px;left:80px; " type="submit">SAVE</button>
+		
+
+	</div>
+</form>		
+
+</body>
+
+</html>

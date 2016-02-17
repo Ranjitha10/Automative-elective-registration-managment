@@ -1,0 +1,72 @@
+<html>
+<body style="background-color:yellow;">
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "elect_auto";
+
+session_start();
+
+$name=$_POST ['Name'];
+echo "Staff_ID  ";
+echo $name;
+echo'<br><br>';
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+$sql = "SELECT staff_id,elective_id FROM teaches";
+
+$result = $conn->query($sql);
+if ($result->num_rows > 0)
+{
+    // output data of each row
+    while($row = $result->fetch_assoc()) 
+    {
+        if( $row["staff_id"]==$name  )
+	{
+		$ele=$row["elective_id"];
+	}
+    }
+
+} 
+else {
+    echo "0 results";
+}
+echo "ELECTIVE_ID ";
+echo $ele;
+echo'<br><br>';
+
+$usn=array("");
+$sql = "SELECT student_usn,elective_id FROM learn";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) 
+{
+    // output data of each row
+$c=0;
+    while($row = $result->fetch_assoc()) 
+    {
+	if($row["elective_id"]==$ele)	
+	{
+		echo $row["student_usn"];
+		echo '<br>';
+		//$usn[$c]=$row["student_usn"];        
+		$c=$c+1;        
+	}  
+   }
+} else {
+    echo "0 results";
+}
+echo "Total students ";
+echo $c;
+echo'<br><br>';
+
+$conn->close();
+?>
+</body>
+</html>

@@ -1,0 +1,79 @@
+
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "elect_auto";
+
+session_start();
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+
+$a=$_SESSION["count"];
+
+session_start();
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+		for($i=1;$i<$a;$i++)	 
+		{
+			$j=$i+300;
+			$a=$_POST[$i];
+			$b=$_POST[$j];
+
+			//////////////////////
+			
+			$sql = "SELECT staff_id,staff_name FROM staff";
+
+			$result = $conn->query($sql);
+			if ($result->num_rows > 0)
+			{
+ 			   // output data of each row
+ 			   while($row = $result->fetch_assoc()) 
+  			  {
+				//echo $b."<br>";
+  			      if( $row["staff_name"]==$b  )
+		              {
+					$id=$row['staff_id'];
+					
+			      }
+   			 }
+			}
+			
+			///////////////////////////////////////////////
+			$sql = "INSERT INTO teaches (elective_id,staff_id)
+			VALUES ('$a','$id')";
+			if ($conn->query($sql) === TRUE) 
+			{
+   				$t=1;
+			}
+			else
+			{
+				
+				$t=0;
+				break;
+   				
+			}
+		}
+			if($t==1)
+			{
+				 echo "<B>success<B>";
+				 echo '<a href="http://localhost/RV/lr/3/admin.php"><br>DONE</a>';	
+			}
+			if($t==0)
+			{
+
+				 echo "<B>success<B>";
+				 echo '<a href="http://localhost/RV/lr/3/admin.php"><br>DONE</a>';	
+			}
+
+$conn->close();
+?>
